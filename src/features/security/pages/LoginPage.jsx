@@ -2,26 +2,19 @@
 import { useFormik } from "formik";
 import { FaArrowRight } from "react-icons/fa";
 import { loginInitValues, loginValidationSchema } from "../forms/login.data";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store";
 
 export const LoginPage = () => {
-  // Hooks de botcitos (forma mas basica de creación de estados)
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('')
+  const navigate = useNavigate();
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
-  //const [login, setLogin] = useState({email: '', password: '', otp: ''});
-
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setLogin((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }))
-  // }
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log({msg: 'Enviando formulario...' , login});
-  // }
+  useEffect(() => {
+    if(isAuthenticated){
+      navigate('/home');
+    }
+  }, [isAuthenticated]);
 
   const formik = useFormik({
     initialValues: loginInitValues,
