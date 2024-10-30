@@ -6,7 +6,7 @@ export const loginAsync = async (form) => {
 
         return data;
     }catch (error){
-        console.error(error);
-        return error?.response;
+        console.error({...error});
+        return error?.response?.data;
     }
 }

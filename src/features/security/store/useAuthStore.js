@@ -10,7 +10,8 @@ export const useAuthStore = create((set, get) => ({
   login: async (form) => {
     // const result = await loginAsync(form); <- Para hacerlo sin destructurar
     const {status, data, message,} = await loginAsync(form);
-
+    console.log({xstatus});
+    
     if (status) {
       set({
         error: false,
