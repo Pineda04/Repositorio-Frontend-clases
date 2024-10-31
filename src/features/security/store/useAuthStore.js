@@ -9,8 +9,8 @@ export const useAuthStore = create((set, get) => ({
   error: false,
   login: async (form) => {
     // const result = await loginAsync(form); <- Para hacerlo sin destructurar
-    const {status, data, message,} = await loginAsync(form);
-    console.log({xstatus});
+    const {status, data, message} = await loginAsync(form);
+    console.log({status});
     
     if (status) {
       set({
@@ -33,4 +33,10 @@ export const useAuthStore = create((set, get) => ({
     set({message: message, error: true});
     return;
   },
+
+  logout: () => {
+    set({user: null, token: null, isAuthenticated: false, error: false, message: ''});
+    localStorage.clear();
+  }
+
 }));
