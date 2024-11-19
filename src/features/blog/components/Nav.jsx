@@ -62,13 +62,18 @@ export const Nav = () => {
           >
             Sobre nosotros
           </Link>
+          <Link
+            to="/administration/dashboard"
+            className="my-1 text-white hover:text-unah-yellow md:mx-4 md:my-0"
+          >
+            Administración
+          </Link>
           {isAuthenticated ? (
-            // Ver cerrar sesión
-            <button onClick={handleLogout} className="my-1 text-white hover:text-unah-yellow md:mx-4 md:my-0 text-left">
-              Salir
-            </button>
+            <button 
+              onClick={handleLogout}
+              className="my-1 text-white text-left hover:text-unah-yellow md:mx-4 md:my-0"
+            >Salir</button>
           ) : (
-            // Ver iniciar sesión
             <Link
               to="/security/login"
               className="my-1 text-white hover:text-unah-yellow md:mx-4 md:my-0"
